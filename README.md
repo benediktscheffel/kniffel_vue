@@ -1,6 +1,6 @@
 # Kniffel Vue (kniffel-vue)
 
-Vue Project for webb applications lecture at HTWG Konstanz
+Vue Project for web applications lecture at HTWG Konstanz
 
 ## Install the dependencies
 ```bash
