@@ -1,4 +1,3 @@
-<!-- LeaveDialog.vue -->
 <template>
   <q-dialog :model-value="leaveDialogVisible" persistent @update:model-value="updateLeaveLobbyDialog">
     <q-card>
@@ -35,5 +34,5 @@ export default {
 </script>
 
 <style scoped>
-/* Your component-specific styles here */
+
 </style>
