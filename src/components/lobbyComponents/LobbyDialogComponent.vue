@@ -1,6 +1,6 @@
 <!-- LobbyDialog.vue -->
 <template>
-  <q-dialog v-model="dialogVisible" persistent>
+  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
     <q-card>
       <q-card-section>
         <div class="container centering-block">
@@ -9,13 +9,13 @@
           </div>
         </div>
         <div>
-          <q-paragraph>
+          <p>
             <span>{{ playersReady }}</span>/<span>{{ playersCount }}</span>
             Players ready
-          </q-paragraph>
-          <q-paragraph>
+          </p>
+          <p>
             <span>Seconds until Start: </span><span>{{ countdown }}</span>
-          </q-paragraph>
+          </p>
         </div>
       </q-card-section>
 
@@ -55,6 +55,9 @@ export default {
     openLeaveDialog() {
       this.$emit('openLeaveDialog');
     },
+    updateConfirmationDialog() {
+      this.$emit('updateConfirmationDialog');
+    }
   },
 };
 </script>

@@ -1,18 +1,11 @@
 <template>
   <q-page class="q-pa-md">
-    <q-container class="q-pa-md">
-      <q-row align="center" justify="center">
-        <q-col>
-          <LobbyFormComponent
-            :yourName="yourName"
-            :isJoinButtonDisabled="isJoinButtonDisabled"
-            @connectWebSocket="connectWebSocket"
-          />
-        </q-col>
-      </q-row>
-    </q-container>
-
-    <LobbyDialogComponent
+    <lobby-form-component
+      :yourName="yourName"
+      :isJoinButtonDisabled="isJoinButtonDisabled"
+      @connectWebSocket="connectWebSocket"
+    />
+    <lobby-dialog-component
       :dialogVisible="dialogVisible"
       :playersReady="playersReady"
       :playersCount="playersCount"
@@ -22,7 +15,7 @@
       @openLeaveDialog="openLeaveDialog"
     />
 
-    <LobbyLeaveDialogComponent
+    <lobby-leave-dialog-component
       :leaveDialogVisible="leaveDialogVisible"
       @leaveLobby="leaveLobby"
       @closeLeaveDialog="closeLeaveDialog"
@@ -61,6 +54,10 @@ export default {
     },
   },
   methods: {
+    readyFunction() {
+      this.ready = true;
+      this.websocket.send(JSON.stringify({event: "ready", playerID: this.playerID}));
+    },
     connectWebSocket(playerName) {
       // Your existing WebSocket connection logic
     },
@@ -90,6 +87,12 @@ export default {
     closeLeaveDialog() {
       this.leaveDialogVisible = false;
     },
+    updateLeaveLobbyDialog() {
+      this.leaveDialogVisible = !this.leaveDialogVisible
+    },
+    updateConfirmationDialog() {
+      this.dialogVisible = !this.dialogVisible
+    }
   },
 };
 </script>

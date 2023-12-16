@@ -1,9 +1,9 @@
 <!-- LeaveDialog.vue -->
 <template>
-  <q-dialog v-model="leaveDialogVisible" persistent>
+  <q-dialog :model-value="leaveDialogVisible" persistent @update:model-value="updateLeaveLobbyDialog">
     <q-card>
       <q-card-section>
-        <q-paragraph>Are you sure you want to leave?</q-paragraph>
+        Are you sure you want to leave?
       </q-card-section>
 
       <q-card-actions align="center">
@@ -23,6 +23,9 @@ export default {
     leaveLobby() {
       this.$emit('leaveLobby');
       this.closeLeaveDialog();
+    },
+    updateLeaveLobbyDialog() {
+      this.$emit('updateLeaveLobbyDialog')
     },
     closeLeaveDialog() {
       this.$emit('closeLeaveDialog');
