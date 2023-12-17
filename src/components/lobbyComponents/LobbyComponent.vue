@@ -1,10 +1,8 @@
 <template>
   <q-page class="q-pa-md">
     <lobby-form-component
-      :yourName="yourName"
       :isJoinButtonDisabled="isJoinButtonDisabled"
       @connectWebSocket="connectWebSocket"
-      @updateYourName="updateYourName"
     />
     <lobby-dialog-component
       :dialogVisible="dialogVisible"
@@ -42,17 +40,13 @@ export default {
       websocket: undefined,
       playersCount: 0,
       playersReady: 0,
-      countdown: 60,
+      countdown: '60',
       ready: false,
-      yourName: '',
+      playerName: '',
       dialogVisible: false,
       leaveDialogVisible: false,
+      isJoinButtonDisabled: true
     };
-  },
-  computed: {
-    isJoinButtonDisabled() {
-      return this.yourName.trim() === '';
-    },
   },
   methods: {
     readyFunction() {
@@ -60,7 +54,56 @@ export default {
       this.websocket.send(JSON.stringify({event: "ready", playerID: this.playerID}));
     },
     connectWebSocket(playerName) {
-      // Your existing WebSocket connection logic
+      this.dialogVisible = true;
+      this.websocket = new WebSocket("ws://localhost:9000/lobbyWebsocket");
+      this.playerName = playerName
+      this.websocket.onopen = () => {
+        this.websocket.send(JSON.stringify({event: "newPlayer", name: playerName}));
+        console.log("Connected to Websocket");
+      }
+
+      this.websocket.onclose = function () {
+        console.log('Connection with Websocket Closed!');
+      };
+
+      this.websocket.onerror = function (error) {
+        console.log('Error in Websocket occurred: ' + error);
+      };
+
+      this.websocket.onmessage = (e) => {
+        const data = JSON.parse(e.data);
+        if (data.event === "updateTimeMessageEvent") {
+          this.countdown = (60 - Math.floor(data.time / 1000)).toString()
+          this.playersCount = data.numberOfPlayers;
+          if ((data.readyCount === this.playersCount && this.playersCount > 1) || data.startGame) {
+            this.websocket.send(JSON.stringify({
+              event: "startGame",
+              name: this.playerName,
+              playerID: this.playerID
+            }));
+          }
+        } else if (data.event === "newPlayerMessageEvent") {
+          this.playerID = data.id;
+          this.timestamp = data.timestamp;
+          this.playersCount = data.numberOfPlayers;
+          this.playersReady = data.readyCount
+        } else if (data.event === "readyMessageEvent") {
+          this.playersReady = data.readyCount
+        } else if (data.event === "closeConnectionMessageEvent") {
+          this.closeConfirmationDialog()
+        } else if (data.event === "newGameMessageEvent") {
+          const playerData = {'id': this.playerID, 'name': this.playerName, 'timestamp': this.timestamp};
+          this.setPlayerInSessionStorage(playerData, () => {
+            if (data.isInitiator) {
+              fetch('http://localhost:9000/new?players=' + data.players).then(() => {
+                window.location.href = '/kniffel'
+              });
+            } else {
+              window.location.href = '/kniffel';
+            }
+          });
+        }
+      };
     },
     closeConnection() {
       this.closeSocketConnection().then(() => {
@@ -70,7 +113,20 @@ export default {
       });
     },
     async closeSocketConnection() {
-      // Your existing closeSocketConnection logic
+      return new Promise((resolve, reject) => {
+        this.websocket.send(JSON.stringify({
+          event: "closeConnection",
+          ready: this.ready,
+          playerID: this.playerID
+        }));
+
+        function handleMessage(event) {
+          const response = JSON.parse(event.data);
+          resolve(response);
+        }
+
+        this.websocket.addEventListener('message', handleMessage);
+      });
     },
     leaveLobby() {
       this.websocket.send(
@@ -81,12 +137,14 @@ export default {
         })
       );
       this.closeLeaveDialog();
+      this.closeConfirmationDialog();
     },
     openLeaveDialog() {
       this.leaveDialogVisible = true;
     },
     closeLeaveDialog() {
       this.leaveDialogVisible = false;
+
     },
     updateLeaveLobbyDialog() {
       this.leaveDialogVisible = !this.leaveDialogVisible
@@ -94,12 +152,20 @@ export default {
     updateConfirmationDialog() {
       this.dialogVisible = !this.dialogVisible
     },
-    updateYourName(playerName) {
-      this.yourName = playerName;
-      if (playerName !== undefined && playerName.length > 0) {
-        this.isJoinButtonDisabled = false;
+    closeConfirmationDialog() {
+      this.dialogVisible = false;
+    },
+    setPlayerInSessionStorage(player, callback) {
+      sessionStorage['player'] = JSON.stringify(player);
+      if (sessionStorage['player'] === JSON.stringify(player)) {
+        callback();
+      } else {
+        setTimeout(() => {
+          console.log("Failed setting player %o in sessionStorage! Retrying...", player);
+          this.setPlayerInSessionStorage(callback);
+        }, 1000);
       }
-    }
+    },
   },
 };
 </script>

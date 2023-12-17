@@ -1,6 +1,6 @@
-<!-- LobbyDialog.vue -->
 <template>
-  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
+  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog"
+            data-bs-backdrop="static">
     <q-card>
       <q-card-section>
         <div class="container centering-block">
@@ -27,12 +27,16 @@
           @click="readyFunction"
           :style="{ backgroundColor: ready ? 'green' : '', borderColor: ready ? 'green' : '' }"
         >
+          <span class="material-symbols-outlined">
           <q-icon v-if="ready">check</q-icon>
+          </span>
           Ready
         </q-btn>
         <q-btn flat color="dark" id="leaveLobby" @click="openLeaveDialog">
           Leave
+          <span class="material-symbols-outlined">
           <q-icon>exit_to_app</q-icon>
+          </span>
         </q-btn>
       </q-card-actions>
     </q-card>
@@ -45,7 +49,7 @@ export default {
     dialogVisible: Boolean,
     playersReady: Number,
     playersCount: Number,
-    countdown: Number,
+    countdown: String,
     ready: Boolean,
   },
   methods: {

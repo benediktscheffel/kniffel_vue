@@ -5,16 +5,15 @@
     <h3 style="text-align: center; margin-bottom: 20px">Let the dice roll</h3>
     <q-form>
       <q-input
-        :model-value="yourName"
+        v-model="yourName"
         filled
         outlined
         id="yourName"
         class="yourNameLabel"
         label="Your Name"
-        @update:model-value="updateYourName(yourName)"
       ></q-input>
       <q-btn
-        :disable="isJoinButtonDisabled"
+        :disable="yourName.length === 0"
         type="button"
         data-bs-toggle="modal"
         class="startButton"
@@ -29,16 +28,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      yourName: '',
+    }
+  },
   props: {
-    yourName: String,
     isJoinButtonDisabled: Boolean,
   },
   methods: {
     connectWebSocket(playerName) {
+      console.log(playerName)
       this.$emit('connectWebSocket', playerName);
-    },
-    updateYourName(playerName) {
-      this.$emit('updateYourName', playerName)
     },
   },
 };
