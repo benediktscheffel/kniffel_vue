@@ -96,10 +96,10 @@ export default {
           this.setPlayerInSessionStorage(playerData, () => {
             if (data.isInitiator) {
               fetch('http://localhost:9000/new?players=' + data.players).then(() => {
-                window.location.href = '/kniffel'
+                this.$router.push("/kniffel");
               });
             } else {
-              window.location.href = '/kniffel';
+              this.$router.push("/kniffel");
             }
           });
         }

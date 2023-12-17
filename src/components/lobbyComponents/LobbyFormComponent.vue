@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     connectWebSocket(playerName) {
-      console.log(playerName)
       this.$emit('connectWebSocket', playerName);
     },
   },
