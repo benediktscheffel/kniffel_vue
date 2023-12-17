@@ -35,17 +35,37 @@ export default {
     active: Boolean,
   },
   methods: {
-    putOut(diceValue) {
-      // Your putOut method logic here
+    dice() {
+      this.$emit('dice')
+    },
+    putIn(diceElement) {
+      $.ajax({
+        url: '/in', type: 'GET', data: {
+          'in': diceElement
+        }, success: function (data) {
+          this.incup = data.dicecup.incup
+          this.stored = data.dicecup.stored
+        },
+        error: function () {
+          console.error('Failed to get dicecup JSON.');
+        }
+      })
+
+    },
+    putOut(diceElement) {
+      this.$emit('putOut', diceElement)
     },
     putAllIn() {
-      // Your putAllIn method logic here
-    },
-    dice() {
-      // Your dice method logic here
-    },
-    putIn(diceValue) {
-      // Your putIn method logic here
+      $.ajax({
+        url: '/in/all', type: 'GET',
+        success: (data) => {
+          this.incup = data.dicecup.incup
+          this.stored = data.dicecup.stored
+        },
+        error: function () {
+          console.error('Failed to get dicecup JSON.');
+        }
+      })
     },
   },
 };
@@ -138,7 +158,7 @@ button.btnAction {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../images/wood.png);
+  background-image: url(src/assets/images/wood.png);
   margin: 2% 35%;
   border-radius: 30px;
 }

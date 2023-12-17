@@ -6,10 +6,10 @@ export default {
   },
   methods: {
     putAllIn() {
-      // Emit an event or perform logic
+      this.$emit('putAllIn')
     },
     dice() {
-      // Emit an event or perform logic
+      this.$emit('dice')
     },
   },
 };

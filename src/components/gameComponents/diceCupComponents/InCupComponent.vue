@@ -6,7 +6,6 @@ export default {
   },
   methods: {
     putOut(diceValue) {
-      // Emit an event or perform logic
       this.$emit('putOut', diceValue)
     },
   },
