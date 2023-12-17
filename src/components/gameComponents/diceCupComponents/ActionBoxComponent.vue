@@ -38,7 +38,9 @@ export default {
       @click="putAllIn"
       :disable="!active"
     >
-      <q-icon name="keyboard_double_arrow_left"/>
+      <span class="material-symbols-outlined">
+        <q-icon name="keyboard_double_arrow_left"/>
+      </span>
     </q-btn>
 
     <q-btn
@@ -50,7 +52,10 @@ export default {
       @click="dice"
       :disable="remainingDices < 0 || !active"
     >
-      <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
+      <span class="material-symbols-outlined">
+        <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
+      </span>
+
     </q-btn>
   </div>
 </template>
@@ -60,7 +65,10 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
+  margin-bottom: 7px;
+  margin-top: 7px;
 }
+
 
 .actionBox img {
   width: 50%;

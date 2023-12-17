@@ -6,7 +6,10 @@
       :stored="stored"
       :active="active"
       @putOut="putOut"
+      @putIn="putIn"
+      @putAllIn="putAllIn "
       @dice="dice"
+      style="align-content: center"
     ></dice-cup-component>
     <field-component></field-component>
     <chat-component
@@ -37,16 +40,21 @@ export default {
       remainingDices: 2,
       stored: [],
       active: false,
-      backendUrl: 'http://localhost:9000',
       matrix: [],
       currentPlayer: 0,
       chatMessages: [],
-
+      backendUrl: 'http://localhost:9000',
     }
   },
+
   created() {
+    console.log("HERE")
     this.initGameSocket()
-    this.getChatUrl();
+    this.getChatUrl()
+    this.getCurrentGameState()
+  },
+  mounted() {
+    // this.refreshChat()
   },
   methods: {
     onWebSocketOpen() {
@@ -170,8 +178,8 @@ export default {
       }
     },
     sendChatMessage(messageContent) {
-      if (this.chatUrl === '') {
-        this.getChatUrl()
+      if (this.chatUrl.length === 0) {
+        this.getChatUrl();
       }
 
       // for future authorization
@@ -193,6 +201,8 @@ export default {
       });
     },
     refreshChat() {
+
+
       $.ajax({
         method: "GET", dataType: "json", url: this.chatUrl,
         success: (data) => {
@@ -243,7 +253,16 @@ export default {
 
     },
     putAllIn() {
-
+      $.ajax({
+        url: this.backendUrl + '/in/all', type: 'GET',
+        success: (data) => {
+          this.incup = data.dicecup.incup
+          this.stored = data.dicecup.stored
+        },
+        error: function () {
+          console.error('Failed to get dicecup JSON.');
+        }
+      });
     },
     dice() {
       $.ajax({
@@ -259,6 +278,31 @@ export default {
         }
       });
 
+    },
+    getCurrentGameState() {
+      this.getCurrentDiceCup()
+      this.getCurrentField()
+    },
+    getCurrentDiceCup() {
+      $.ajax({
+        url: this.backendUrl + '/dicecup', method: 'GET', success: (data) => {
+          this.incup = data.dicecup.incup
+          this.stored = data.dicecup.stored
+          this.remainingDices = data.dicecup.remainingDices
+        }
+      })
+
+    },
+    getCurrentField() {
+      $.ajax({
+        url: this.backendUrl + '/field', type: 'GET', success: (data) => {
+          this.matrix = data.controller.field.rows;
+          this.controller = data.controller;
+          this.currentPlayer = data.controller.game.currentPlayerID;
+          this.numberOfPlayers = this.matrix[0].length;
+          this.players = this.controller.game.players;
+        }
+      })
     },
   }
 }
