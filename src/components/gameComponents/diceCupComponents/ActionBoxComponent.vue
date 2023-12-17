@@ -17,15 +17,15 @@ export default {
 
 <template>
   <div class="action-box">
-    <q-img src="assets/images/dicecup_small.png" id="remDice3" :style="{
+    <q-img src="src/assets/images/dicecup_small.png" id="remDice3" :style="{
       opacity: remainingDices < 2 ? 0.3 : 1
     }"/>
 
-    <q-img src="assets/images/dicecup_small.png" id="remDice2" :style="{
+    <q-img src="src/assets/images/dicecup_small.png" id="remDice2" :style="{
       opacity: remainingDices < 1 ? 0.3 : 1
     }"/>
 
-    <q-img src="assets/images/dicecup_small.png" id="remDice1" :style="{
+    <q-img src="src/assets/images/dicecup_small.png" id="remDice1" :style="{
       opacity: remainingDices < 0 ? 0.3 : 1
     }"/>
 
@@ -50,11 +50,21 @@ export default {
       @click="dice"
       :disable="remainingDices < 0 || !active"
     >
-      <q-img src="assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
+      <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
     </q-btn>
   </div>
 </template>
 
 <style scoped>
-/* Your component-specific styles here */
+.actionBox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.actionBox img {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
 </style>
