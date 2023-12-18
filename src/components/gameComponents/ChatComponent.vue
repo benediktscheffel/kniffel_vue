@@ -7,7 +7,7 @@
     class="q-ma-md chatButton"
     @click="refreshChat"
   >
-    <q-menu anchor="bottom right" self="bottom right">
+    <q-menu @before-show="hideChatButton" @before-hide="showChatButton" anchor="bottom right" self="bottom right">
       <q-item class="chatContainer">
 
         <div class="q-pa-md row justify-center" style="overflow:unset">
@@ -29,6 +29,9 @@
           <q-input
             rounded outlined
             v-model="messageContent"
+            color="white"
+            :label-color="'white'"
+            :input-style="{color: 'white'}"
             label="Your comment"
             placeholder="Here is my message.."
             type="textarea"
@@ -69,14 +72,20 @@ export default {
     },
     refreshChat() {
       this.$emit('refreshChat');
+    },
+    showChatButton () {
+      const chatBtn = document.querySelector('.chatButton')
+      chatBtn.style.visibility = 'visible'
+    },
+    hideChatButton () {
+      const chatBtn = document.querySelector('.chatButton')
+      chatBtn.style.visibility = 'hidden'
     }
   },
 };
 </script>
 
 <style scoped>
-
-
 .chatButton {
   position: fixed;
   bottom: 0;
