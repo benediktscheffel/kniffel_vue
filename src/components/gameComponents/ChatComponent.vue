@@ -8,22 +8,20 @@
     @click="refreshChat"
   >
     <q-menu anchor="bottom right" self="bottom right">
-      <q-item>
+      <q-item class="chatContainer">
 
-        <div class="q-pa-md row justify-center">
+        <div class="q-pa-md row justify-center" style="overflow:unset">
 
           <div style="width: 100%; max-width: 400px">
-            <q-scroll-area>
-              <q-chat-message
-                v-for="chatMessage in chatMessages"
-                :key="chatMessage.id"
-                :name="chatMessage.author"
-                :text="[chatMessage.content]"
-                :sent="this.playerName === chatMessage.author"
-                :stamp="calculateMinutesAgo(chatMessage.created_at) + ' minutes ago'"
-              />
-            </q-scroll-area>
 
+            <q-chat-message
+              v-for="chatMessage in chatMessages"
+              :key="chatMessage.id"
+              :name="chatMessage.author"
+              :text="[chatMessage.content]"
+              :sent="this.playerName === chatMessage.author"
+              :stamp="calculateMinutesAgo(chatMessage.created_at) + ' minutes ago'"
+            />
           </div>
         </div>
 
@@ -39,7 +37,7 @@
           <q-btn
             :disable="messageContent.length === 0"
             type="submit" label="Send"
-            color="primary" class="q-mt-md"
+            class="q-mt-md"
             @click="sendChatMessage"/>
         </q-form>
       </q-item>
@@ -92,14 +90,43 @@ export default {
   max-width: 10px;
   justify-content: right;
   display: flex;
+  flex-direction: column;
   max-height: 60%;
 }
 
-.q-field__native {
-  color: lightgray;
+.q-btn {
+  color: #ffffff;
+  background: #55553e;
+}
+
+.col {
+  background: #222;
 }
 
 .q-item {
   background: #222;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  color: white;
+
 }
+
+form.q-form {
+  display: flex;
+  flex-direction: column;
+  //justify-content: flex-end;
+  height: 13%;
+  color: white;
+}
+
+textarea {
+  color: white !important;
+}
+
+.q-chat-message {
+  align-items: flex-end;
+
+}
+
 </style>
