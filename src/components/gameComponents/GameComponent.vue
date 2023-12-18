@@ -31,6 +31,7 @@
 import DiceCupComponent from 'components/gameComponents/DiceCupComponent.vue'
 import FieldComponent from 'components/gameComponents/FieldComponent.vue'
 import ChatComponent from 'components/gameComponents/ChatComponent.vue'
+import $ from 'jquery'
 export default {
   components: {
     DiceCupComponent,
@@ -299,7 +300,7 @@ export default {
       })
     },
     writeTo (row) {
-      const index = row < 6 ? row : this.writeDownMappingsForLowerPart[row - 9]
+      const index = row < 6 ? (row + 1) : this.writeDownMappingsForLowerPart[row - 9]
       $.ajax({
         url: this.backendUrl + '/write',
         type: 'GET',
@@ -376,9 +377,7 @@ export default {
     }
   }
 }
-import $ from 'jquery'
 
-import BootstrapVue from "bootstrap-vue";
 </script>
 
 <style>
