@@ -70,8 +70,7 @@ export default {
 .board {
   display: flex;
   justify-content: center;
-  //align-items: center;
-  background-image: url(src/assets/images/wood.png);
+  align-items: center;
   background-repeat: repeat;
   margin: 2% 35%;
   border-radius: 30px;
@@ -83,7 +82,9 @@ export default {
 
 }
 
-q-card q-card-section {
-  background: unset;
+q-card {
+  background: url("src/assets/images/wood.png");
+
+
 }
 </style>

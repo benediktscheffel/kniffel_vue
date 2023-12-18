@@ -3,15 +3,7 @@
 
     <q-card>
       <q-card-section>
-        <q-btn
-          flat
-          round
-          size="md"
-          icon="close"
-          class="q-ma-md"
-          style="float: right"
-          @click="toggleShowChat"
-        />
+        <q-btn flat round size="md" icon="close" class="q-ma-md" style="float: right" @click="toggleShowChat"/>
         <h1 class="q-mb-md">Chat-Room</h1>
 
         <q-form @submit.prevent="sendChatMessage">

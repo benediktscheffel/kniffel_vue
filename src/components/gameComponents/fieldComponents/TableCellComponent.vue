@@ -1,5 +1,6 @@
 <script>
 import ActionButtonComponent from 'components/gameComponents/fieldComponents/ActionButtonComponent.vue'
+
 export default {
   components: {
     ActionButtonComponent
@@ -20,7 +21,7 @@ export default {
     actionBtnActionText: String
   },
   methods: {
-    writeTo () {
+    writeTo() {
       this.$emit('writeTo')
     }
   }
@@ -29,16 +30,16 @@ export default {
 <template>
   <q-td :class="this.classAttribute">
     <template v-if="this.hasContent">
-      {{this.cellContent}}
+      {{ this.cellContent }}
     </template>
     <template v-else-if="this.hasIcon">
       <q-icon :name="this.icon"/>
     </template>
     <template v-else-if="this.hasSpan">
-      <span :class="this.spanClassAttribute">{{this.spanContent}}</span>
+      <span :class="this.spanClassAttribute">{{ this.spanContent }}</span>
     </template>
     <template v-else>
-      <action-button-component @write-to="this.writeTo" :row="this.actionBtnRow" :active="this.actionBtnActive"
+      <action-button-component @writeTo="this.writeTo" :row="this.actionBtnRow" :active="this.actionBtnActive"
                                :img-src="this.actionBtnImgSrc" :action-text="this.actionBtnActionText">
       </action-button-component>
     </template>

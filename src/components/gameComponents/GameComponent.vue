@@ -12,7 +12,7 @@
       style="align-content: center"
     ></dice-cup-component>
     <field-component
-      @write-to="writeTo"
+      @writeTo="writeTo"
       :current-player="this.currentPlayer"
       :matrix="this.matrix"
       :players="this.players[0]"
@@ -31,13 +31,15 @@
 import DiceCupComponent from 'components/gameComponents/DiceCupComponent.vue'
 import FieldComponent from 'components/gameComponents/FieldComponent.vue'
 import ChatComponent from 'components/gameComponents/ChatComponent.vue'
+import $ from 'jquery'
+
 export default {
   components: {
     DiceCupComponent,
     FieldComponent,
     ChatComponent
   },
-  data () {
+  data() {
     return {
       gameSocket: undefined,
       chatUrl: '',
@@ -55,18 +57,18 @@ export default {
     }
   },
 
-  created () {
+  created() {
     console.log('HERE')
     this.initGameSocket()
     this.getChatUrl()
     this.getCurrentGameState()
     this.getCurrentField()
   },
-  mounted () {
+  mounted() {
     // this.refreshChat()
   },
   methods: {
-    onWebSocketOpen () {
+    onWebSocketOpen() {
       // diceCup
       $.ajax({
         url: this.backendUrl + '/dicecup',
@@ -94,7 +96,7 @@ export default {
         }
       })
     },
-    initGameSocket () {
+    initGameSocket() {
       this.gameSocket = new WebSocket('ws://localhost:9000/websocket')
 
       this.gameSocket.onopen = (event) => {
@@ -188,7 +190,7 @@ export default {
         }, 1000)
       }
     },
-    sendChatMessage (messageContent) {
+    sendChatMessage(messageContent) {
       if (this.chatUrl.length === 0) {
         this.getChatUrl()
       }
@@ -199,20 +201,20 @@ export default {
       let credentials = username + ":" + password;
       let authToken = "Basic " + btoa(credentials); */
 
-      const myMessage = { author: this.playerName, content: messageContent }
+      const myMessage = {author: this.playerName, content: messageContent}
       $.ajax({
         url: this.chatUrl,
         method: 'POST',
         data: JSON.stringify(myMessage),
         success: () => {
-          this.gameSocket.send(JSON.stringify({ event: 'refreshChats' }))
+          this.gameSocket.send(JSON.stringify({event: 'refreshChats'}))
         },
         error: function (err) {
           console.error('Failed sending message: %o', err)
         }
       })
     },
-    refreshChat () {
+    refreshChat() {
       $.ajax({
         method: 'GET',
         dataType: 'json',
@@ -226,7 +228,7 @@ export default {
         }
       })
     },
-    getChatUrl () {
+    getChatUrl() {
       $.ajax({
         url: this.backendUrl + '/chatid',
         method: 'GET',
@@ -239,7 +241,7 @@ export default {
         }
       })
     },
-    putIn (diceValue) {
+    putIn(diceValue) {
       $.ajax({
         url: this.backendUrl + '/in',
         type: 'GET',
@@ -255,7 +257,7 @@ export default {
         }
       })
     },
-    putOut (diceValue) {
+    putOut(diceValue) {
       $.ajax({
         url: this.backendUrl + '/out',
         type: 'GET',
@@ -271,7 +273,7 @@ export default {
         }
       })
     },
-    putAllIn () {
+    putAllIn() {
       $.ajax({
         url: this.backendUrl + '/in/all',
         type: 'GET',
@@ -284,7 +286,7 @@ export default {
         }
       })
     },
-    dice () {
+    dice() {
       $.ajax({
         url: this.backendUrl + '/dice',
         method: 'GET',
@@ -298,7 +300,7 @@ export default {
         }
       })
     },
-    writeTo (row) {
+    writeTo(row) {
       const index = row < 6 ? row : this.writeDownMappingsForLowerPart[row - 9]
       $.ajax({
         url: this.backendUrl + '/write',
@@ -312,18 +314,18 @@ export default {
           this.currentPlayer = data.controller.game.currentPlayerID
           this.numberOfPlayers = this.matrix[0].length
           this.players = this.controller.game.players
-          this.gameSocket.send(JSON.stringify({ event: 'nextRound' }))
+          this.gameSocket.send(JSON.stringify({event: 'nextRound'}))
         },
         error: function () {
           console.error('Failed to write down the result!')
         }
       })
     },
-    getCurrentGameState () {
+    getCurrentGameState() {
       this.getCurrentDiceCup()
       this.getCurrentField()
     },
-    getCurrentDiceCup () {
+    getCurrentDiceCup() {
       $.ajax({
         url: this.backendUrl + '/dicecup',
         method: 'GET',
@@ -334,7 +336,7 @@ export default {
         }
       })
     },
-    getCurrentField () {
+    getCurrentField() {
       $.ajax({
         url: this.backendUrl + '/field',
         type: 'GET',
@@ -376,9 +378,6 @@ export default {
     }
   }
 }
-import $ from 'jquery'
-
-import BootstrapVue from "bootstrap-vue";
 </script>
 
 <style>

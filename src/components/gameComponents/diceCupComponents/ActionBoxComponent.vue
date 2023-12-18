@@ -29,33 +29,18 @@ export default {
       opacity: remainingDices < 0 ? 0.3 : 1
     }"/>
 
-    <q-btn
-      type="button"
-      style="margin-top: 5px"
-      id="allInButton"
-      class="q-ml-md"
-      color="dark"
-      @click="putAllIn"
-      :disable="!active"
+    <q-btn type="button" style="margin-top: 5px" id="allInButton" class="q-ml-md" color="dark" @click="putAllIn"
+           :disable="!active || remainingDices < 0"
     >
       <span class="material-symbols-outlined">
         <q-icon name="keyboard_double_arrow_left"/>
       </span>
     </q-btn>
 
-    <q-btn
-      type="button"
-      style="margin-top: 5px;"
-      id="diceButton"
-      class="q-ml-md"
-      color="dark"
-      @click="dice"
-      :disable="remainingDices < 0 || !active"
-    >
+    <q-btn style="margin-top: 5px;" class="q-ml-md" color="dark" @click="dice" :disable="remainingDices < 0 || !active">
       <span class="material-symbols-outlined">
         <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
       </span>
-
     </q-btn>
   </div>
 </template>

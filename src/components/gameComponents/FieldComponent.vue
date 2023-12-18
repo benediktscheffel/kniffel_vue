@@ -25,7 +25,7 @@ export default {
     active: Boolean
   },
   methods: {
-    writeTo (row) {
+    writeTo(row) {
       this.$emit('writeTo', (row - 1))
     }
   }
@@ -33,27 +33,27 @@ export default {
 </script>
 
 <template>
- <div class="game">
-   <div class="tableContainer">
-     <table class="gameTable" id="gameTable">
-       <thead>
+  <div class="game">
+    <div class="tableContainer">
+      <table class="gameTable" id="gameTable">
+        <thead>
         <q-tr class="main-heading">
           <header-table-cell-component :is-first-col="true"></header-table-cell-component>
           <header-table-cell-component :is-second-col="true" :current-player="this.currentPlayer"
                                        :matrix="this.matrix"></header-table-cell-component>
-          <template v-for="col in this.numberOfPlayer" :key="col">
+          <template v-for="col in this.numberOfPlayers" :key="col">
             <header-table-cell-component :player-name="this.players[col-1].name"></header-table-cell-component>
           </template>
         </q-tr>
-       </thead>
-       <q-tr v-for="row in 19" :key="row">
-         <table-row-component @write-to="this.writeTo" :row="row" :active="this.active" :matrix="this.matrix"
-                              :current-player="this.currentPlayer" :number-of-players="this.numberOfPlayer">
-         </table-row-component>
-       </q-tr>
-     </table>
-   </div>
- </div>
+        </thead>
+        <q-tr v-for="row in 19" :key="row">
+          <table-row-component @writeTo="this.writeTo" :row="row" :active="this.active" :matrix="this.matrix"
+                               :current-player="this.currentPlayer" :number-of-players="this.numberOfPlayers">
+          </table-row-component>
+        </q-tr>
+      </table>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -82,12 +82,15 @@ export default {
 .gameTable th:last-child {
   border-top-right-radius: 20px;
 }
+
 .gameTable th:first-child {
   border-top-left-radius: 20px;
 }
+
 .gameTable tr:last-child td:first-child {
   border-bottom-left-radius: 20px;
 }
+
 .gameTable tr:last-child td:last-child {
   border-bottom-right-radius: 20px;
 }

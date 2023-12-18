@@ -1,7 +1,8 @@
 <script>
 import TableCellComponent from 'components/gameComponents/fieldComponents/TableCellComponent.vue'
+
 export default {
-  data () {
+  data() {
     return {
       firstColumn: [
         'src/assets/images/3_mal_1.png', 'src/assets/images/3_mal_2.png', 'src/assets/images/3_mal_3.png',
@@ -29,8 +30,9 @@ export default {
     currentPlayer: Number,
     numberOfPlayers: Number
   },
+  emits: ['writeTo'],
   methods: {
-    writeTo () {
+    writeTo() {
       this.$emit('writeTo', this.row)
     }
   }
@@ -38,16 +40,20 @@ export default {
 </script>
 <template>
   <template v-if="this.row <= 6">
-    <table-cell-component @write-to="this.writeTo" :has-action-btn="true" :action-btn-row="this.row"
+    <table-cell-component @writeTo="this.writeTo" :has-action-btn="true" :action-btn-row="this.row"
                           :action-btn-active="(!this.active)||(matrix.length > 0&&matrix[row-1][currentPlayer]!=='')"
-                          :action-btn-action-text="this.firstColumn[row-1]" :action-btn-img-src="this.firstColumn[row-1]"></table-cell-component>
-    <table-cell-component class-attribute="secondColumn" :has-content="true" :cell-content="this.secondColumn[row-1]"></table-cell-component>
+                          :action-btn-action-text="this.firstColumn[row-1]"
+                          :action-btn-img-src="this.firstColumn[row-1]"></table-cell-component>
+    <table-cell-component class-attribute="secondColumn" :has-content="true"
+                          :cell-content="this.secondColumn[row-1]"></table-cell-component>
   </template>
   <template v-else-if="(row-1) > 8 && (row-1) < 16">
-    <table-cell-component @write-to="this.writeTo" :has-action-btn="true" :action-btn-row="this.row"
+    <table-cell-component @writeTo="this.writeTo" :has-action-btn="true" :action-btn-row="this.row"
                           :action-btn-active="(!this.active)||(matrix.length > 0&&matrix[row-1][currentPlayer]!=='')"
-                          :action-btn-action-text="this.firstColumn[row-1]" :action-btn-img-src="this.firstColumn[row-1]"></table-cell-component>
-    <table-cell-component class-attribute="secondColumn" :has-content="true" :cell-content="this.secondColumn[row-1]"></table-cell-component>
+                          :action-btn-action-text="this.firstColumn[row-1]"
+                          :action-btn-img-src="this.firstColumn[row-1]"></table-cell-component>
+    <table-cell-component class-attribute="secondColumn" :has-content="true"
+                          :cell-content="this.secondColumn[row-1]"></table-cell-component>
   </template>
   <template v-else>
     <table-cell-component :has-content="true" :cell-content="this.firstColumn[row-1]"></table-cell-component>

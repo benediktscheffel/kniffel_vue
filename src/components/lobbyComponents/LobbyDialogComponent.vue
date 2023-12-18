@@ -1,6 +1,5 @@
 <template>
-  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog"
-            data-bs-backdrop="static">
+  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
     <q-card>
       <q-card-section>
         <div class="container centering-block">
