@@ -172,7 +172,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+main {
+  display: flex;
+  align-items: center;
+}
 q-card-section {
   position: relative;
   background-color: #fefefe;
