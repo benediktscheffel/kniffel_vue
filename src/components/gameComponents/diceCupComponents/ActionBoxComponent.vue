@@ -46,16 +46,24 @@ export default {
 </template>
 
 <style scoped>
+
 .actionBox {
+  justify-content: center;
+  align-content: center;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   margin-left: 30px;
   margin-bottom: 7px;
   margin-top: 7px;
 }
-.actionBox img {
-  width: 50%;
-  text-align: center;
-  margin: auto;
+
+.q-btn {
+  height: 50px;
+  width: 100px;
 }
+
+.q-ml-md {
+  margin-left: 0;
+}
+
 </style>

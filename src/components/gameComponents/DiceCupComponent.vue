@@ -3,6 +3,7 @@
 
     <q-card>
       <div class="board">
+
         <q-card-section>
           <in-cup-component
             :incup="incup"
@@ -27,8 +28,8 @@
           ></dice-storage-component>
         </q-card-section>
       </div>
-
     </q-card>
+
   </q-page>
 </template>
 
@@ -71,20 +72,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-repeat: repeat;
   margin: 2% 35%;
-  border-radius: 30px;
+  //border-radius: 30px;
 }
 
-.diceBoard {
-  width: 250px;
-  height: 250px;
-
-}
-
-q-card {
+.q-card {
   background: url("src/assets/images/wood.png");
-
-
+  border-radius: 30px;
+  box-shadow: #1a1d20;
 }
+
 </style>
