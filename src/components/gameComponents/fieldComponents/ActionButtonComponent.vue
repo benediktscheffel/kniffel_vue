@@ -31,10 +31,15 @@ export default {
     height: 100%;
     width: 100%;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .btnAction img {
+  button.btnAction:hover {
+    cursor: pointer;
+  }
+  /*.btnAction img {
     height: 100%;
     width: auto;
-  }
+  }*/
 </style>

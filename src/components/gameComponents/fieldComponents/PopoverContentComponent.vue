@@ -40,7 +40,7 @@ export default {
             <q-icon :name="this.bottomPart[row2 - 1]" />
           </q-td>
           <td v-else-if="row2 === 13 || row2 === 14">
-            <img :src="'src/assets/images/' + this.bottomPart[row2 - 1]"/>
+            <img class="streets" :src="'src/assets/images/' + this.bottomPart[row2 - 1]"/>
           </td>
         </template>
       </template>
@@ -48,6 +48,9 @@ export default {
   </table>
 </template>
 <style>
+table.popover-table {
+  border-collapse: collapse;
+}
 .popover-table td{
   height: 45px;
   border: 1px solid black;
@@ -71,6 +74,10 @@ export default {
 
 .popover-table img {
   height: 100%;
+  display: block;
 }
 
+img.streets {
+  padding-left: 10.8px;
+}
 </style>
