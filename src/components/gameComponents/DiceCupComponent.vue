@@ -69,17 +69,29 @@ export default {
 
 <style scoped>
 .board {
+  max-width: 600px;
+  min-width: 400px;
+  margin: 2% 35%;
+  //border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.q-card {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2% 35%;
-  //border-radius: 30px;
-}
-
-.q-card {
   background: url("src/assets/images/wood.png");
   border-radius: 30px;
   box-shadow: #1a1d20;
+  max-width: 600px;
+  max-height: 400px;
 }
-
+main.q-page.q-pa-md {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: unset !important;
+}
 </style>

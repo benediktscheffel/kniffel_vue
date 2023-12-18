@@ -75,7 +75,7 @@ export default {
 }
 
 .gameTable th {
-  padding: 15px;
+  padding: 10px;
   border: 1px solid black;
   text-align: center !important;
   background-color: #9f4045;
