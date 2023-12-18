@@ -34,5 +34,11 @@ export default {
 </script>
 
 <style scoped>
+.q-card {
+  background: #222;
+}
 
+.q-btn {
+  background: darkgrey;
+}
 </style>

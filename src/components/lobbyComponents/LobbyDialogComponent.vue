@@ -66,5 +66,12 @@ export default {
 </script>
 
 <style scoped>
-/* Your component-specific styles here */
+
+.q-card {
+  background: #222;
+}
+
+.q-btn {
+  background: darkgrey;
+}
 </style>

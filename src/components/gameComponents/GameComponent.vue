@@ -22,6 +22,8 @@
     <chat-component
       @sendChatMessage="sendChatMessage"
       :chatMessages="chatMessages"
+      :player-name="playerName"
+      @refreshChat="refreshChat"
     ></chat-component>
 
   </div>
@@ -53,7 +55,8 @@ export default {
       currentPlayer: 0,
       writeDownMappingsForLowerPart: ['3X', '4X', 'FH', 'KS', 'GS', 'KN', 'CH'],
       chatMessages: [],
-      backendUrl: 'http://localhost:9000'
+      backendUrl: 'http://localhost:9000',
+      playerName: ''
     }
   },
 
@@ -221,7 +224,6 @@ export default {
         url: this.chatUrl,
         success: (data) => {
           this.chatMessages = data.messages
-          this.messageContent = ''
         },
         error: function (err) {
           console.error('Failed reloading messages: %o', err)

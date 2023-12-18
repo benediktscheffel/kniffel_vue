@@ -2,7 +2,7 @@
 
 /*@import 'bootstrap.min.css';*/
 
-body {
+#q-app {
   font-family: "Ubuntu", "Verdana", "Arial", sans-serif;
   background-image: radial-gradient(forestgreen, black);
   /*background-repeat: no-repeat;*/
