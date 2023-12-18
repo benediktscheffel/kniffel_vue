@@ -239,7 +239,9 @@ $(document).ready(function () {
   </div>
 </template>
 
-<style>
+<style scoped>
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 h1 {
   margin-top: 1%;
 }
