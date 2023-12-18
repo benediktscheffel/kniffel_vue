@@ -170,7 +170,7 @@ export default {
               console.log('activate')
             }
             this.remainingDices = 2
-            // this.getCurrentField()
+            this.getCurrentField()
           } else if (JSON.parse(e.data).event === 'refreshChatsMessageEvent') {
             this.refreshChat()
           } else {
