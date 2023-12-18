@@ -1,19 +1,23 @@
 <!-- DiceStorage.vue -->
 <template>
   <div class="dice-storage" id="diceStorage">
-    <div
+    <die-component @putIn="putIn(diceValue)"
       v-for="(diceValue, index) in stored"
       :key="index"
-      @click="putIn(diceValue)"
-      :class="'dice dice_' + diceValue + ' stored'"
-      :value="diceValue"
-      :style="{ visibility: 'visible', pointerEvents: active ? 'unset' : 'none' }"
-    ></div>
+      :diceValue="diceValue"
+      :index="index"
+      :stored="true"
+      :active="this.active"
+    ></die-component>
   </div>
 </template>
 
 <script>
+import DieComponent from 'components/gameComponents/diceCupComponents/DieComponent.vue'
 export default {
+  components: {
+    DieComponent
+  },
   props: {
     stored: Array,
     active: Boolean,
@@ -39,43 +43,5 @@ export default {
   height: 210px;
   display: flex;
   flex-direction: column;
-}
-
-
-.dice {
-  width: 43px;
-  height: 43px;
-  float: left;
-  margin: auto;
-}
-
-.dice_1 {
-  background: url('src/assets/images/1.png') no-repeat;
-  background-size: 100%;
-}
-
-.dice_2 {
-  background: url('src/assets/images/2.png') no-repeat;
-  background-size: 100%;
-}
-
-.dice_3 {
-  background: url('src/assets/images/3.png') no-repeat;
-  background-size: 100%;
-}
-
-.dice_4 {
-  background: url('src/assets/images/4.png') no-repeat;
-  background-size: 100%;
-}
-
-.dice_5 {
-  background: url('src/assets/images/5.png') no-repeat;
-  background-size: 100%;
-}
-
-.dice_6 {
-  background: url('src/assets/images/6.png') no-repeat;
-  background-size: 100%;
 }
 </style>
