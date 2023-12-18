@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="cup" style="background: none">
+  <div class="cup">
     <div class="dice-in-cup" id="diceInCup">
       <div
         v-for="(diceValue, index) in incup"
@@ -34,7 +34,7 @@ export default {
   display: inline-block;
   position: relative;
   left: -32px;
-  top: 10px;
+  top: 0px;
   visibility: hidden;
 }
 
@@ -76,16 +76,6 @@ export default {
   transform: rotate(190deg);
   top: 100px;
   left: 120px
-}
-
-.diceInCup {
-  padding: 52px 65px;
-  width: 290px;
-  display: inline-block;
-  position: relative;
-  left: -32px;
-  top: 10px;
-  visibility: hidden;
 }
 
 .dice {
@@ -145,6 +135,9 @@ export default {
   }
 }
 
+.cup {
+  width: 227px;
+  height: 229px;
+}
 
 </style>
-

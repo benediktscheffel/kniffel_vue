@@ -39,7 +39,7 @@ export default {
 
     <q-btn style="margin-top: 5px;" class="q-ml-md" color="dark" @click="dice" :disable="remainingDices < 0 || !active">
       <span class="material-symbols-outlined">
-        <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -5px;" width="40px"/>
+        <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -12px;" width="40px"/>
       </span>
     </q-btn>
   </div>
@@ -57,9 +57,23 @@ export default {
   margin-top: 7px;
 }
 
+.action-box {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .q-btn {
-  height: 50px;
-  width: 100px;
+  min-height: 35px;
+  height: 35px;
+  width: 80px;
+  font-size: 1.2em;
+}
+
+.q-btn .q-icon, .q-btn .q-spinner {
+  font-size: unset;
+  vertical-align: baseline;
 }
 
 .q-ml-md {

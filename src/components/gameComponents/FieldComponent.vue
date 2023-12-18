@@ -55,7 +55,9 @@ export default {
     </div>
   </div>
 </template>
-
+<style scoped>
+@import 'bootstrap/dist/css/bootstrap.min.css';
+</style>
 <style>
 .game {
   display: flex;
@@ -66,13 +68,14 @@ export default {
 .gameTable td {
   height: 45px;
   border: 1px solid black;
+  background-color: white;
   text-align: center;
   color: black;
   width: 200px;
 }
 
 .gameTable th {
-  padding: 15px;
+  padding: 10px;
   border: 1px solid black;
   text-align: center !important;
   background-color: #9f4045;
@@ -96,15 +99,15 @@ export default {
 }
 
 .tableContainer table {
-  background-color: white;
-  border-collapse: separate;
+  background-color: black;
+  border-collapse: unset;
   border-spacing: 0;
-  scale: 0.9;
+  scale: 0.88;
   border-radius: 20px;
 }
 
 .gameTable td:hover {
-  background-color: #e6e6e6;
+  background-color: lightgrey;
 }
 
 .gameTable tr.main-heading {
@@ -133,5 +136,9 @@ export default {
 
 .gameTable td.activeCol {
   background-color: lightgrey;
+}
+
+.gameTable tr {
+  border-collapse: collapse;
 }
 </style>

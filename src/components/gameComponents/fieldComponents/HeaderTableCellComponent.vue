@@ -55,12 +55,19 @@ export default {
     </template>
   </q-th>
 </template>
-<style>
+<style scoped>
 .q-menu.scroll {
   overflow: hidden;
 }
 .popoverButton {
   text-transform: unset;
   padding: 6px 20px;
+  background: var(--q-dark);
+  border-radius: 10px;
+}
+#scrollDown {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 </style>
