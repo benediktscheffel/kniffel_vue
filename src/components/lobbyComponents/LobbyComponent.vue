@@ -45,7 +45,8 @@ export default {
       playerName: '',
       dialogVisible: false,
       leaveDialogVisible: false,
-      isJoinButtonDisabled: true
+      isJoinButtonDisabled: true,
+      gameStarted: false
     };
   },
   methods: {
@@ -75,7 +76,8 @@ export default {
         if (data.event === "updateTimeMessageEvent") {
           this.countdown = (60 - Math.floor(data.time / 1000)).toString()
           this.playersCount = data.numberOfPlayers;
-          if ((data.readyCount === this.playersCount && this.playersCount > 1) || data.startGame) {
+          if (!this.gameStarted && ((data.readyCount === this.playersCount && this.playersCount > 1) || data.startGame)) {
+            this.gameStarted = true;
             this.websocket.send(JSON.stringify({
               event: "startGame",
               name: this.playerName,
