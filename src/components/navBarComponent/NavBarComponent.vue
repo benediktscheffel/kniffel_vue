@@ -1,15 +1,15 @@
 <template>
   <q-header>
     <q-toolbar class="bg-dark text-white">
-      <q-btn flat dense round to="/" class="q-mr-md" color="white">
+      <q-btn flat dense to="/" class="q-mr-md" color="white">
         <q-avatar icon="home" text-color="white"/>
         Home
       </q-btn>
-      <q-btn flat dense round to="/kniffel" id="actionGame" color="white">
+      <q-btn flat dense to="/kniffel" id="actionGame" color="white">
         Game
       </q-btn>
       <q-space/>
-      <q-btn flat dense round to="/about" color="white">
+      <q-btn flat dense to="/about" color="white">
         About
       </q-btn>
     </q-toolbar>
