@@ -1,5 +1,6 @@
 <script>
 import PopoverContentComponent from 'components/gameComponents/fieldComponents/PopoverContentComponent.vue'
+import $ from 'jquery';
 export default {
   data () {
     return {
@@ -24,12 +25,12 @@ export default {
       }
     },
     restart () {
-      console.log('implement restart!')
-      /* $.ajax({
-        url: '/restart', type: 'GET', success:  () => {
-          window.location.href = '/';
+      $.ajax({
+        url: 'http://localhost:9000/restart', type: 'GET',
+        success: () => {
+          window.location.href = '/'
         }
-      }); */
+      })
     }
   }
 }
@@ -40,7 +41,7 @@ export default {
       <button type="button" id="scrollDown" class="btn btn-block" @click="zoomIntoField">
         <span class="material-symbols-outlined">expand_content</span>
       </button>
-<!--      <q-btn type="button" class="btn btn-block" @click="restart">restart</q-btn>-->
+      <q-btn type="button" class="btn btn-block" @click="restart">restart</q-btn>
     </template>
     <template v-else-if="this.isSecondCol">
       <q-btn @mouseover="showing = true" @mouseleave="showing = false" class="btn btn-dark popoverButton">Available Options

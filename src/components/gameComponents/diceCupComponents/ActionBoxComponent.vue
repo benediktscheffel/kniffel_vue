@@ -68,8 +68,6 @@ export default {
   margin-bottom: 7px;
   margin-top: 7px;
 }
-
-
 .actionBox img {
   width: 50%;
   text-align: center;

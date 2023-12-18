@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     writeTo (row) {
-      console.log('Emitted row was ' + (row - 1))
+      this.$emit('writeTo', (row - 1))
     }
   }
 }
