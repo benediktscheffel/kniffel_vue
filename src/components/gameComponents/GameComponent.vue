@@ -310,7 +310,6 @@ export default {
         method: 'GET',
         success: (data) => {
           this.suggestions = data
-          console.log(data[0])
         },
         error: () => {
           console.error('Failed to update suggestions');
