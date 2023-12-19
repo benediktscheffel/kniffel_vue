@@ -18,7 +18,9 @@ export default {
     actionBtnRow: Number,
     actionBtnActive: Boolean,
     actionBtnImgSrc: String,
-    actionBtnActionText: String
+    actionBtnActionText: String,
+    isActive: Boolean,
+    placeholder: String
   },
   methods: {
     writeTo() {
@@ -36,7 +38,15 @@ export default {
       <q-icon :name="this.icon"/>
     </template>
     <template v-else-if="this.hasSpan">
-      <span :class="this.spanClassAttribute">{{ this.spanContent }}</span>
+      <template v-if="this.spanContent.length > 0">
+        <span :class="this.spanClassAttribute">{{ this.spanContent }}</span>
+      </template>
+      <template v-else-if="placeholder !== undefined && placeholder.length > 0">
+        <button :class="this.spanClassAttribute" class="placeholder" @click="writeTo" type="button">
+          {{ this.placeholder }}
+        </button>
+      </template>
+
     </template>
     <template v-else>
       <action-button-component @writeTo="this.writeTo" :row="this.actionBtnRow" :active="this.actionBtnActive"
@@ -48,5 +58,17 @@ export default {
 <style>
 .secondColumn i {
   font-size: 25px;
+}
+
+.placeholder {
+  color: grey;
+  font-style: italic;
+  width: inherit;
+  background: inherit;
+  height: inherit;
+  border: unset;
+}
+
+button {
 }
 </style>
