@@ -1,5 +1,9 @@
 <script>
+import DiceCupActionButtonComponent from 'components/gameComponents/diceCupComponents/DiceCupActionButtonComponent.vue';
 export default {
+  components: {
+    DiceCupActionButtonComponent
+  },
   props: {
     remainingDices: Number,
     active: Boolean,
@@ -28,20 +32,10 @@ export default {
     <q-img src="src/assets/images/dicecup_small.png" id="remDice1" :style="{
       opacity: remainingDices < 0 ? 0.3 : 1
     }"/>
-
-    <q-btn type="button" style="margin-top: 5px" id="allInButton" class="q-ml-md" color="dark" @click="putAllIn"
-           :disable="!active || remainingDices < 0"
-    >
-      <span class="material-symbols-outlined">
-        <q-icon name="keyboard_double_arrow_left"/>
-      </span>
-    </q-btn>
-
-    <q-btn style="margin-top: 5px;" class="q-ml-md" color="dark" @click="dice" :disable="remainingDices < 0 || !active">
-      <span class="material-symbols-outlined">
-        <q-img src="src/assets/images/flying_dices_small_white.png" style="margin-top: -12px;" width="40px"/>
-      </span>
-    </q-btn>
+    <dice-cup-action-button-component @putAllIn="putAllIn" :disabled="!active || remainingDices < 0" id="allInButton" :is-dice-button="false">
+    </dice-cup-action-button-component>
+    <dice-cup-action-button-component @dice="dice" :disabled="remainingDices < 0 || !active" :is-dice-button="true">
+    </dice-cup-action-button-component>
   </div>
 </template>
 
@@ -63,21 +57,4 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-
-.q-btn {
-  min-height: 35px;
-  height: 35px;
-  width: 80px;
-  font-size: 1.2em;
-}
-
-.q-btn .q-icon, .q-btn .q-spinner {
-  font-size: unset;
-  vertical-align: baseline;
-}
-
-.q-ml-md {
-  margin-left: 0;
-}
-
 </style>
