@@ -7,71 +7,55 @@
     class="q-ma-md chatButton"
     @click="refreshChat"
   >
-    <q-menu @before-show="hideChatButton" @before-hide="showChatButton" anchor="bottom right" self="bottom right">
+    <q-menu transition-show="rotate"
+            transition-hide="rotate"
+            id="chatMenu"
+            @before-show="hideChatButton"
+            @before-hide="showChatButton"
+            anchor="bottom right"
+            self="bottom right">
       <q-item class="chatContainer">
-
-        <div class="q-pa-md row justify-center" style="overflow:unset">
+        <div class="q-pa-md row justify-center" :style="{ overflow: 'unset', height: '100%' }">
 
           <div style="width: 100%; max-width: 400px">
-
-            <q-chat-message
-              v-for="chatMessage in chatMessages"
-              :key="chatMessage.id"
-              :name="chatMessage.author"
-              :text="[chatMessage.content]"
-              :sent="this.playerName === chatMessage.author"
-              :stamp="calculateMinutesAgo(chatMessage.created_at) + ' minutes ago'"
-            />
+            <chat-message-component v-for="chatMessage in chatMessages"
+                                    :key="chatMessage.id"
+                                    :playerName="this.playerName"
+                                    :chatMessage="chatMessage">
+            </chat-message-component>
           </div>
         </div>
-
-        <q-form @submit.prevent="sendChatMessage">
-          <q-input
-            rounded outlined
-            v-model="messageContent"
-            color="white"
-            :label-color="'white'"
-            :input-style="{color: 'white'}"
-            label="Your comment"
-            placeholder="Here is my message.."
-            type="textarea"
-
-          />
-          <q-btn
-            :disable="messageContent.length === 0"
-            type="submit" label="Send"
-            class="q-mt-md"
-            @click="sendChatMessage"/>
-        </q-form>
+        <chat-form-component @sendChatMessage="sendChatMessage"></chat-form-component>
       </q-item>
     </q-menu>
   </q-btn>
 </template>
 
 <script>
+import ChatMessageComponent from 'components/gameComponents/chatComponents/ChatMessageComponent.vue'
+import ChatFormComponent from 'components/gameComponents/chatComponents/ChatFormComponent.vue'
+
 export default {
-  data() {
+  components: {
+    ChatMessageComponent,
+    ChatFormComponent
+  },
+  data () {
     return {
-      showChat: false,
-      messageContent: '',
-    };
+      showChat: false
+    }
   },
   props: {
     chatMessages: Array,
     playerName: String
   },
-  emits: ['sendChatMessage', 'refreshChat'],
+  emits: ['refreshChat'],
   methods: {
-    sendChatMessage() {
-      this.$emit('sendChatMessage', this.messageContent)
-      this.messageContent = '';
-
+    sendChatMessage (messageContent) {
+      this.$emit('sendChatMessage', messageContent)
     },
-    calculateMinutesAgo(created_at) {
-      return Math.round((new Date() - new Date(created_at)) / 60000)
-    },
-    refreshChat() {
-      this.$emit('refreshChat');
+    refreshChat () {
+      this.$emit('refreshChat')
     },
     showChatButton () {
       const chatBtn = document.querySelector('.chatButton')
@@ -81,8 +65,8 @@ export default {
       const chatBtn = document.querySelector('.chatButton')
       chatBtn.style.visibility = 'hidden'
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -108,33 +92,12 @@ export default {
   background: #55553e;
 }
 
-.col {
-  background: #222;
-}
-
 .q-item {
   background: #222;
   display: flex;
   flex-direction: column;
   width: 400px;
   color: white;
-
-}
-
-form.q-form {
-  display: flex;
-  flex-direction: column;
-  //justify-content: flex-end;
-  height: 13%;
-  color: white;
-}
-
-textarea {
-  color: white !important;
-}
-
-.q-chat-message {
-  align-items: flex-end;
 
 }
 
