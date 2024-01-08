@@ -18,6 +18,7 @@
       :players="this.players[0]"
       :number-of-players="this.numberOfPlayers"
       :active="this.active"
+      :suggestions="this.suggestions"
     ></field-component>
     <chat-component
       @sendChatMessage="sendChatMessage"
@@ -56,19 +57,16 @@ export default {
       writeDownMappingsForLowerPart: ['3X', '4X', 'FH', 'KS', 'GS', 'KN', 'CH'],
       chatMessages: [],
       backendUrl: 'http://localhost:9000',
-      playerName: ''
+      playerName: '',
+      suggestions: undefined
     }
   },
-
   created() {
     console.log('HERE')
     this.initGameSocket()
     this.getChatUrl()
     this.getCurrentGameState()
     this.getCurrentField()
-  },
-  mounted() {
-    // this.refreshChat()
   },
   methods: {
     onWebSocketOpen() {
@@ -151,6 +149,7 @@ export default {
               this.incup = JSON.parse(e.data).dicecup.incup
               this.remainingDices = JSON.parse(e.data).dicecup.remainingDices
               this.stored = JSON.parse(e.data).dicecup.stored
+              this.updateSuggestions()
             } else {
               this.incup = JSON.parse(e.data).dicecup.incup
               this.remainingDices = JSON.parse(e.data).dicecup.remainingDices
@@ -174,6 +173,7 @@ export default {
             }
             this.remainingDices = 2
             this.getCurrentField()
+            this.suggestions = undefined
           } else if (JSON.parse(e.data).event === 'refreshChatsMessageEvent') {
             this.refreshChat()
           } else {
@@ -292,15 +292,29 @@ export default {
       $.ajax({
         url: this.backendUrl + '/dice',
         method: 'GET',
-        success: function (data) {
+        success: (data) => {
           this.incup = data.dicecup.incup
           this.stored = data.dicecup.stored
           this.remainingDices = data.dicecup.remainingDices
+          this.updateSuggestions()
         },
         error: function () {
           console.error('Failed to get dicecup JSON.')
         }
       })
+
+    },
+    updateSuggestions() {
+      $.ajax({
+        url: this.backendUrl + '/suggestions',
+        method: 'GET',
+        success: (data) => {
+          this.suggestions = data
+        },
+        error: () => {
+          console.error('Failed to update suggestions');
+        }
+      });
     },
     writeTo(row) {
       const index = row < 6 ? (row + 1) : this.writeDownMappingsForLowerPart[row - 9]
@@ -317,6 +331,7 @@ export default {
           this.numberOfPlayers = this.matrix[0].length
           this.players = this.controller.game.players
           this.gameSocket.send(JSON.stringify({event: 'nextRound'}))
+          this.suggestions = undefined
         },
         error: function () {
           console.error('Failed to write down the result!')
@@ -335,6 +350,9 @@ export default {
           this.incup = data.dicecup.incup
           this.stored = data.dicecup.stored
           this.remainingDices = data.dicecup.remainingDices
+          if (this.remainingDices < 2) {
+            this.updateSuggestions()
+          }
         }
       })
     },

@@ -22,7 +22,8 @@ export default {
     matrix: Array,
     players: Array,
     numberOfPlayers: Number,
-    active: Boolean
+    active: Boolean,
+    suggestions: Object,
   },
   methods: {
     writeTo(row) {
@@ -48,7 +49,8 @@ export default {
         </thead>
         <q-tr v-for="row in 19" :key="row">
           <table-row-component @writeTo="this.writeTo" :row="row" :active="this.active" :matrix="this.matrix"
-                               :current-player="this.currentPlayer" :number-of-players="this.numberOfPlayers">
+                               :current-player="this.currentPlayer" :number-of-players="this.numberOfPlayers"
+                               :suggestions="this.suggestions">
           </table-row-component>
         </q-tr>
       </table>

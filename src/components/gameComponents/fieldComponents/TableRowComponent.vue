@@ -28,7 +28,8 @@ export default {
     active: Boolean,
     matrix: Array,
     currentPlayer: Number,
-    numberOfPlayers: Number
+    numberOfPlayers: Number,
+    suggestions: Object
   },
   emits: ['writeTo'],
   methods: {
@@ -68,14 +69,25 @@ export default {
   </template>
   <template v-for="col in this.numberOfPlayers" :key="col">
     <template v-if="(col-1) === this.currentPlayer">
-      <table-cell-component class-attribute="activeCol" :has-span="true" span-class-attribute="cell"
-                            :span-content="this.matrix[this.row-1][col - 1]"></table-cell-component>
+      <template v-if="this.suggestions !== undefined && this.suggestions[row - 1] !== undefined">
+        <table-cell-component class-attribute="activeCol" :has-span="true" span-class-attribute="cell"
+                              :span-content="this.matrix[this.row-1][col - 1]"
+                              :placeholder="this.suggestions[row - 1].toString()"
+                              @writeTo="writeTo"></table-cell-component>
+      </template>
+      <template v-else>
+        <table-cell-component class-attribute="activeCol" :has-span="true" span-class-attribute="cell"
+                              :span-content="this.matrix[this.row-1][col - 1]"
+                              :placeholder="''" :active="true"></table-cell-component>
+      </template>
     </template>
     <template v-else>
       <table-cell-component :has-span="true" span-class-attribute="cell"
-                            :span-content="this.matrix[this.row-1][col - 1]"></table-cell-component>
+                            :span-content="this.matrix[this.row-1][col - 1]"
+                            :placeholder="''" :active="false"></table-cell-component>
     </template>
   </template>
 </template>
 <style>
+
 </style>
