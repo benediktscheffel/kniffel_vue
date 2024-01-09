@@ -56,7 +56,7 @@ export default {
       currentPlayer: 0,
       writeDownMappingsForLowerPart: ['3X', '4X', 'FH', 'KS', 'GS', 'KN', 'CH'],
       chatMessages: [],
-      backendUrl: 'http://localhost:9000',
+      backendUrl: 'http://85.215.67.144:9000',
       playerName: '',
       suggestions: undefined
     }
@@ -98,7 +98,7 @@ export default {
       })
     },
     initGameSocket() {
-      this.gameSocket = new WebSocket('ws://localhost:9000/websocket')
+      this.gameSocket = new WebSocket('ws://85.215.67.144:9000/websocket')
 
       this.gameSocket.onopen = (event) => {
         this.waitForPlayer((p) => {

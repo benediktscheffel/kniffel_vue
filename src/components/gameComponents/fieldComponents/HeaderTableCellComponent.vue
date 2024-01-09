@@ -26,7 +26,7 @@ export default {
     },
     restart () {
       $.ajax({
-        url: 'http://localhost:9000/restart', type: 'GET',
+        url: 'http://85.215.67.144:9000/restart', type: 'GET',
         success: () => {
           window.location.href = '/'
         }

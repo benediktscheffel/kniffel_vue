@@ -56,7 +56,7 @@ export default {
     },
     connectWebSocket(playerName) {
       this.dialogVisible = true;
-      this.websocket = new WebSocket("ws://localhost:9000/lobbyWebsocket");
+      this.websocket = new WebSocket("ws://85.215.67.144:9000/lobbyWebsocket");
       this.playerName = playerName
       this.websocket.onopen = () => {
         this.websocket.send(JSON.stringify({event: "newPlayer", name: playerName}));
@@ -97,7 +97,7 @@ export default {
           const playerData = {'id': this.playerID, 'name': this.playerName, 'timestamp': this.timestamp};
           this.setPlayerInSessionStorage(playerData, () => {
             if (data.isInitiator) {
-              fetch('http://localhost:9000/new?players=' + data.players).then(() => {
+              fetch('http://85.215.67.144:9000/new?players=' + data.players).then(() => {
                 this.$router.push("/kniffel");
               });
             } else {
