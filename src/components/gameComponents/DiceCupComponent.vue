@@ -87,12 +87,59 @@ export default {
   box-shadow: #1a1d20;
   max-width: 600px;
   max-height: 400px;
-  width: -webkit-fill-available;
 }
+
+@media screen and (max-width: 600px) {
+  .board {
+    max-width: 400px;
+    min-width: 200px;
+    margin: 2% 10%;
+  }
+
+  .q-card {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .board {
+    max-width: 400px;
+    min-width: 200px;
+    margin: 2% 10%;
+  }
+
+  .q-card {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .board {
+    max-width: 400px;
+    min-width: 200px;
+    margin: 2% 10%;
+    scale: 78%;
+  }
+
+  .q-card {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}
+
 main.q-page.q-pa-md {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: unset !important;
 }
+
+@media screen and (max-width: 350px) {
+  .board {
+    max-width: 340px;
+    min-width: 150px;
+  }
+}
+
 </style>

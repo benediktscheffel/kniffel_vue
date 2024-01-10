@@ -402,10 +402,12 @@ export default {
 </script>
 
 <style>
-
-.gameContainer {
-  width: -webkit-fill-available;
+@media screen and (max-width: 350px) {
+  .gameContainer {
+    width: 120%;
+  }
 }
+
 
 .hide {
   display: none;

@@ -29,6 +29,24 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 450px) {
+  .dice {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .d2 {
+    left: 110px;
+  }
+  .d3 {
+    left: 157px;
+  }
+  .d5 {
+    left: 110px
+  }
+}
+
 .dice {
   width: 43px;
   height: 43px;
