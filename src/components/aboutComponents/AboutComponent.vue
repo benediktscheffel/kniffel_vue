@@ -263,6 +263,20 @@ body {
   color: white;
 }
 
+@media screen and (max-width: 600px) {
+  .aboutContainer {
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .aboutContainer {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
 .card-block .btn-outline-primary {
   width: 100%;
   border-top-left-radius: 0;
