@@ -104,9 +104,11 @@ export default {
 
 @media screen and (max-width: 450px) {
   .board {
-    max-width: 400px;
+    max-width: 350px;
     min-width: 200px;
     margin: 2% 10%;
+    scale: 78%;
+
   }
 
   .q-card {
@@ -116,7 +118,7 @@ export default {
 }
 @media screen and (max-width: 350px) {
   .board {
-    max-width: 400px;
+    max-width: 300px;
     min-width: 200px;
     margin: 2% 10%;
     scale: 78%;
@@ -134,12 +136,4 @@ main.q-page.q-pa-md {
   align-items: center;
   min-height: unset !important;
 }
-
-@media screen and (max-width: 350px) {
-  .board {
-    max-width: 340px;
-    min-width: 150px;
-  }
-}
-
 </style>
