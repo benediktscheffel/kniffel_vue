@@ -48,6 +48,10 @@ q-img {
   height: 5%;
 }
 
+h1, h3 {
+  font-size: 40px;
+  line-height: 15px;
+}
 
 
 #img {
@@ -61,8 +65,8 @@ q-img {
     margin-right: 10.5%;
   }
   h1, h3 {
-    font-size: 40px;
-    line-height: 15px;
+    font-size: 35px;
+    line-height: 35px;
   }
 }
 
@@ -73,9 +77,8 @@ q-img {
   }
   h1, h3 {
     font-size: 40px;
-    line-height: 40px;
+    line-height: 15px;
   }
-
 }
 
 .startButton {
