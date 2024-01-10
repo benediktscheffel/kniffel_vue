@@ -87,6 +87,7 @@ export default {
   box-shadow: #1a1d20;
   max-width: 600px;
   max-height: 400px;
+  width: -webkit-fill-available;
 }
 main.q-page.q-pa-md {
   display: flex;

@@ -77,7 +77,7 @@ h1, h3 {
   }
   h1, h3 {
     font-size: 40px;
-    line-height: 15px;
+    line-height: 40px;
   }
 }
 

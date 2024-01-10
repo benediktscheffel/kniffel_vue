@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="gameContainer">
     <dice-cup-component
       :incup="incup"
       :remaining-dices="remainingDices"
@@ -402,6 +402,10 @@ export default {
 </script>
 
 <style>
+
+.gameContainer {
+  width: -webkit-fill-available;
+}
 
 .hide {
   display: none;
