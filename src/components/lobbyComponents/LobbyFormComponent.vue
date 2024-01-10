@@ -48,14 +48,34 @@ q-img {
   height: 5%;
 }
 
-h1, h3 {
-  font-size: 40px;
-  line-height: 15px;
-}
+
 
 #img {
   max-height: 120px;
   max-width: 120px;
+}
+
+@media screen and (max-width: 600px) {
+  .startGame {
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+  }
+  h1, h3 {
+    font-size: 40px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .startGame {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  h1, h3 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
 }
 
 .startButton {

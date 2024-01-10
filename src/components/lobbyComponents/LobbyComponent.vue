@@ -209,4 +209,21 @@ q-card-actions {
   padding-bottom: 5px;
   background-color: #9f4045;
 }
+
+@media screen and (max-width: 600px) {
+  .q-pa-md {
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    font-size: 10.5%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .q-pa-md {
+    margin-left: 5%;
+    margin-right: 5%;
+
+  }
+}
+
 </style>
