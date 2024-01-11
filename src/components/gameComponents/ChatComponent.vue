@@ -73,6 +73,25 @@ export default {
 </script>
 
 <style scoped>
+
+@media screen and (max-width: 600px) {
+  .chatContainer {
+    max-width: 550px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .chatContainer {
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .chatContainer {
+    max-width: 330px;
+  }
+}
+
 .chatButton {
   position: fixed;
   bottom: 0;

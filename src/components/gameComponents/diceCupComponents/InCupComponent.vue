@@ -38,15 +38,18 @@ export default {
   height: 229px;
   //scale: 75%;
 }
+
 @media screen and (max-width: 600px) {
   .cup {
     width: 165px;
     height: 166px;
   }
+
   .cup.showCup {
     background-size: 165px !important;
     background-repeat: no-repeat !important;
   }
+
   #diceInCup {
     left: 0;
   }
@@ -59,10 +62,12 @@ export default {
     width: 165px;
     height: 166px;
   }
+
   .cup.showCup {
     background-size: 165px !important;
     background-repeat: no-repeat !important;
   }
+
   #diceInCup {
     left: 0;
   }
@@ -73,6 +78,7 @@ export default {
     width: 175px;
     height: 100px;
   }
+
   .cup.showCup {
     background-size: 165px !important;
     background-repeat: no-repeat !important;
@@ -83,6 +89,22 @@ export default {
   }
 }
 
+@media screen and (max-width: 320px) {
+
+  .cup {
+    width: 140px;
+    height: 100px;
+  }
+  .cup.showCup {
+    background-size: 140px !important;
+    background-repeat: no-repeat !important;
+  }
+
+  #diceInCup {
+    left: 0;
+  }
+
+}
 
 #diceInCup {
   padding: 52px 65px;
