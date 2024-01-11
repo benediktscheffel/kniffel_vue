@@ -404,13 +404,13 @@ export default {
 <style>
 @media screen and (max-width: 600px) {
   .gameContainer {
-    //width: 120%;
+    width: 120%;
   }
 }
 
 @media screen and (max-width: 450px) {
   .gameContainer {
-    width: 120%;
+    width: 108%;
   }
 }
 
@@ -419,6 +419,7 @@ export default {
     width: 120%;
   }
 }
+
 
 .hide {
   display: none;
