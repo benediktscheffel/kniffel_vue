@@ -103,10 +103,10 @@ export default {
 
 @media screen and (max-width: 450px) {
   .board {
-    max-width: 440px;
+    max-width: 375px;
     min-width: 200px;
     margin: 2% 10%;
-    scale: 95%;
+    scale: 80%;
   }
 
   .q-card {
