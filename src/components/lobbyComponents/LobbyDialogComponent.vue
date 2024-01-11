@@ -2,16 +2,16 @@
   <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
     <q-card>
       <q-card-section class="dialogBodyBox">
-          <lobby-loading-animation-component></lobby-loading-animation-component>
-          <div class="dialogBodyText">
-            <p>
-              <span>{{ playersReady }}</span>/<span>{{ playersCount }}</span>
-              Players ready
-            </p>
-            <p>
-              <span>Seconds until Start: </span><span>{{ countdown }}</span>
-            </p>
-          </div>
+        <lobby-loading-animation-component></lobby-loading-animation-component>
+        <div class="dialogBodyText">
+          <p>
+            <span>{{ playersReady }}</span>/<span>{{ playersCount }}</span>
+            Players ready
+          </p>
+          <p>
+            <span>Seconds until Start: </span><span>{{ countdown }}</span>
+          </p>
+        </div>
       </q-card-section>
 
       <q-card-actions align="center">
@@ -68,6 +68,10 @@ export default {
 </script>
 
 <style scoped>
+
+.q-dialog {
+  background: unset;
+}
 
 .q-card {
   background: #222;
