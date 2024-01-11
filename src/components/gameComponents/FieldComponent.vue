@@ -40,7 +40,7 @@ export default {
         <thead>
         <q-tr class="main-heading">
           <header-table-cell-component :is-first-col="true"></header-table-cell-component>
-          <header-table-cell-component :is-second-col="true" :current-player="this.currentPlayer"
+          <header-table-cell-component class="secondHeader" :is-second-col="true" :current-player="this.currentPlayer"
                                        :matrix="this.matrix"></header-table-cell-component>
           <template v-for="col in this.numberOfPlayers" :key="col">
             <header-table-cell-component :player-name="this.players[col-1].name"></header-table-cell-component>
@@ -61,6 +61,39 @@ export default {
 @import 'bootstrap/dist/css/bootstrap.min.css';
 </style>
 <style>
+@media screen and (max-width: 600px)  {
+
+}
+
+@media screen and (max-width: 450px)  {
+  .qameTable td {
+    width: 100px;
+  }
+
+  .secondHeader {
+    display: none;
+  }
+
+  .gameTable td.secondColumn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 350px)  {
+  .qameTable td {
+    width: 100px;
+  }
+
+  .secondHeader {
+    display: none;
+  }
+
+  .gameTable td.secondColumn {
+    display: none;
+  }
+}
+
+
 .game {
   display: flex;
   flex-direction: column;
