@@ -55,7 +55,7 @@ export default {
 
 @media screen and (max-width: 450px) {
   .cup {
-    padding-left: 0;
+    margin-right: 10px;
     width: 165px;
     height: 166px;
   }
@@ -70,9 +70,8 @@ export default {
 
 @media screen and (max-width: 350px) {
   .cup {
-    padding-left: 25px;
-    width: 165px;
-    height: 166px;
+    width: 175px;
+    height: 100px;
   }
   .cup.showCup {
     background-size: 165px !important;
@@ -111,7 +110,7 @@ export default {
 }
 
 .cup {
-  width: 227px;
+  width: 190px;
   height: 229px;
 }
 

@@ -49,7 +49,10 @@ export default {
     chatMessages: Array,
     playerName: String
   },
-  emits: ['refreshChat'],
+  emits: [
+    'refreshChat',
+    'sendChatMessage'
+  ],
   methods: {
     sendChatMessage (messageContent) {
       this.$emit('sendChatMessage', messageContent)

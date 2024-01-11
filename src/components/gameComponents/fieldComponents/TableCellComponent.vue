@@ -63,7 +63,6 @@ export default {
 .placeholder {
   color: grey;
   font-style: italic;
-  width: inherit;
   background: inherit;
   height: inherit;
   border: unset;

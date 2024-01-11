@@ -39,7 +39,7 @@ export default {
 }
 
 #diceStorage {
-  width: 85px;
+  width: 75px;
   height: 210px;
   display: flex;
   flex-direction: column;

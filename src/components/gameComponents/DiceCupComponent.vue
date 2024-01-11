@@ -72,7 +72,6 @@ export default {
   max-width: 600px;
   min-width: 400px;
   margin: 2% 35%;
-  //border-radius: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -107,8 +106,7 @@ export default {
     max-width: 440px;
     min-width: 200px;
     margin: 2% 10%;
-    scale: 78%;
-
+    scale: 95%;
   }
 
   .q-card {
