@@ -66,6 +66,7 @@ export default {
   border-radius: 10px;
 }
 #scrollDown {
+  color: black;
   background: none;
   border: none;
   cursor: pointer;
