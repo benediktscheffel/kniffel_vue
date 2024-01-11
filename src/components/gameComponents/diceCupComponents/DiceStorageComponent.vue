@@ -31,12 +31,6 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (max-width: 320px) {
-  .dice-storage {
-    max-width: 60px;
-  }
-}
-
 .dice-storage {
   background: unset;
   -ms-transform: rotate(0deg);

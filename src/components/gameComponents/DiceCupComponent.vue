@@ -128,20 +128,6 @@ export default {
   }
 }
 
-@media screen and (max-width: 320px) {
-  .board {
-    max-width: 320px;
-    min-width: 200px;
-    margin: 2% 20%;
-    scale: 78%;
-  }
-
-  .q-card {
-    max-width: 320px;
-    min-width: 200px;
-  }
-}
-
 main.q-page.q-pa-md {
   display: flex;
   justify-content: center;
