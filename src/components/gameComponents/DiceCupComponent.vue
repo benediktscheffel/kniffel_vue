@@ -91,20 +91,20 @@ export default {
 
 @media screen and (max-width: 600px) {
   .board {
-    max-width: 400px;
+    max-width: 500px;
     min-width: 200px;
     margin: 2% 10%;
   }
 
   .q-card {
-    max-width: 400px;
+    max-width: 600px;
     min-width: 200px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .board {
-    max-width: 350px;
+    max-width: 440px;
     min-width: 200px;
     margin: 2% 10%;
     scale: 78%;
@@ -112,20 +112,20 @@ export default {
   }
 
   .q-card {
-    max-width: 400px;
+    max-width: 450px;
     min-width: 200px;
   }
 }
 @media screen and (max-width: 350px) {
   .board {
-    max-width: 300px;
+    max-width: 340px;
     min-width: 200px;
-    margin: 2% 10%;
+    margin: 2% 20%;
     scale: 78%;
   }
 
   .q-card {
-    max-width: 400px;
+    max-width: 350px;
     min-width: 200px;
   }
 }

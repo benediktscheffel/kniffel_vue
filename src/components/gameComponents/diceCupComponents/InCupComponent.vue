@@ -38,7 +38,7 @@ export default {
   height: 229px;
   //scale: 75%;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .cup {
     width: 165px;
     height: 166px;
@@ -51,6 +51,39 @@ export default {
     left: 0;
   }
 }
+
+
+@media screen and (max-width: 450px) {
+  .cup {
+    padding-left: 0;
+    width: 165px;
+    height: 166px;
+  }
+  .cup.showCup {
+    background-size: 165px !important;
+    background-repeat: no-repeat !important;
+  }
+  #diceInCup {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .cup {
+    padding-left: 25px;
+    width: 165px;
+    height: 166px;
+  }
+  .cup.showCup {
+    background-size: 165px !important;
+    background-repeat: no-repeat !important;
+  }
+
+  #diceInCup {
+    left: 0;
+  }
+}
+
 
 #diceInCup {
   padding: 52px 65px;

@@ -402,12 +402,23 @@ export default {
 </script>
 
 <style>
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 600px) {
+  .gameContainer {
+    //width: 120%;
+  }
+}
+
+@media screen and (max-width: 450px) {
   .gameContainer {
     width: 120%;
   }
 }
 
+@media screen and (max-width: 350px) {
+  .gameContainer {
+    width: 120%;
+  }
+}
 
 .hide {
   display: none;
