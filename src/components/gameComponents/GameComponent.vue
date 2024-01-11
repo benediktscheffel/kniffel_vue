@@ -419,6 +419,20 @@ export default {
   perspective: 1000px;
   opacity: 1
 }
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-4px, -4px, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(8px, 8px, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-16px, -16px, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(16px, 16px, 0);
+  }
+}
 
 @keyframes shake {
   10%, 90% {

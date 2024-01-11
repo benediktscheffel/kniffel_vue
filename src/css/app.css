@@ -58,37 +58,6 @@ a.dropdown-item.active:hover, a.dropdown-item:hover {
   --bs-dropdown-link-color: var(--bs-white);
 }
 
-#chatroom {
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 15px;
-  width: 400px;
-  background-color: rgba(var(--bs-dark-rgb));
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.date {
-  color: #b3b3b3;
-}
-
-#messages {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid white;
-}
-
-#chatContainer {
-  position: fixed;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatebottom;
-  animation-duration: 0.4s;
-  right: 20px;
-  bottom: 20px;
-  z-index: 5;
-}
-
 @-webkit-keyframes animatebottom {
   from {
     bottom: -300px;
@@ -111,13 +80,3 @@ a.dropdown-item.active:hover, a.dropdown-item:hover {
   }
 }
 
-#chatButton {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 5;
-}
-
-#your-message {
-  max-height: 350px;
-}
