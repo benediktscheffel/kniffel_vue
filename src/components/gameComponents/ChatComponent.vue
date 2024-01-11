@@ -73,6 +73,36 @@ export default {
 </script>
 
 <style scoped>
+
+@media screen and (max-width: 600px) {
+  
+}
+
+@media screen and (max-width: 450px) {
+  .chatContainer{
+    width: 343px !important;
+    display: flex !important;
+    justify-self: center !important;
+    max-width: 375px;
+  }
+
+  .q-menu {
+    justify-content: center !important;
+  }
+
+  #chatMenu {
+    max-width: 375px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .chatContainer{
+    max-width: 300px;
+  }
+  .q-menu {
+    justify-content: center !important;
+  }
+}
 .chatButton {
   position: fixed;
   bottom: 0;
@@ -80,8 +110,8 @@ export default {
 }
 
 .q-menu {
-  right: 17px;
-  bottom: 60px;
+  /* right: 17px; */
+  /* bottom: 60px; */
   left: unset;
   max-width: 10px;
   justify-content: right;
@@ -99,7 +129,7 @@ export default {
   background: #222;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  /* width: 400px; */
   color: white;
 
 }
