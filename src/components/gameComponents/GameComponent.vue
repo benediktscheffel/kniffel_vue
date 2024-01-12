@@ -399,6 +399,9 @@ export default {
 </script>
 
 <style>
+div#chatMenu {
+  max-height: 85vh !important;
+}
 
 .gameContainer {
   width: 100%;
@@ -417,6 +420,19 @@ export default {
   perspective: 1000px;
   opacity: 1
 }
+
+@media screen and (max-width: 600px) {
+  div#chatMenu {
+    max-height: 70vh !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  div#chatMenu {
+    max-height: 50vh !important;
+  }
+}
+
 @-webkit-keyframes shake {
   10%, 90% {
     -webkit-transform: translate3d(-4px, -4px, 0);

@@ -14,6 +14,9 @@
             @before-hide="showChatButton"
             anchor="bottom right"
             self="bottom right">
+<!--      <div @click="closeChat" style="cursor: pointer; position: absolute; top: 5px; right: 10px; z-index: 13; color: lightgrey;">
+        <p>X</p>
+      </div>-->
       <q-item class="chatContainer">
         <div class="q-pa-md row justify-center" :style="{ overflow: 'unset', height: '100%' }">
 
@@ -62,36 +65,48 @@ export default {
     },
     showChatButton () {
       const chatBtn = document.querySelector('.chatButton')
+      document.body.style.overflow = 'auto'
       chatBtn.style.visibility = 'visible'
     },
     hideChatButton () {
       const chatBtn = document.querySelector('.chatButton')
+      document.body.style.overflow = 'hidden'
       chatBtn.style.visibility = 'hidden'
     }
+    /*
+    ,
+    closeChat () {
+      const chat = document.getElementById('chatMenu')
+      chat.style = 'visibility: hidden'
+      this.showChatButton()
+    }
+    */
   }
 }
 </script>
 
 <style scoped>
 
+.chatContainer {
+  width: 350px;
+  max-height: 90%;
+  justify-self: center;
+}
+
 @media screen and (max-width: 600px) {
-  
+
 }
 
 @media screen and (max-width: 450px) {
   .chatContainer{
-    width: 343px !important;
-    display: flex !important;
-    justify-self: center !important;
+    width: 343px;
+    display: flex;
+    justify-self: center;
     max-width: 375px;
   }
 
   .q-menu {
     justify-content: center !important;
-  }
-
-  #chatMenu {
-    max-width: 375px;
   }
 }
 
