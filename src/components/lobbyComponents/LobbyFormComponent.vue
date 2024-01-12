@@ -61,23 +61,22 @@ h1, h3 {
 
 @media screen and (max-width: 600px) {
   .startGame {
-    margin-left: 10.5%;
-    margin-right: 10.5%;
+    margin-left: 0;
+    margin-right: 0;
   }
   h1, h3 {
-    font-size: 35px;
-    line-height: 35px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .q-field {
+    width: 120px;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .startGame {
-    margin-left: 5%;
-    margin-right: 5%;
-  }
   h1, h3 {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 23px;
+    line-height: 25px;
   }
 }
 

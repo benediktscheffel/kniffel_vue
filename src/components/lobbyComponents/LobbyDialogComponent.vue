@@ -1,5 +1,5 @@
 <template>
-  <q-dialog :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
+  <q-dialog @beforeShow="scrollToTop" :model-value="dialogVisible" persistent @update:model-value="updateConfirmationDialog">
     <q-card>
       <q-card-section class="dialogBodyBox">
         <lobby-loading-animation-component></lobby-loading-animation-component>
@@ -62,6 +62,9 @@ export default {
     },
     updateConfirmationDialog() {
       this.$emit('updateConfirmationDialog');
+    },
+    scrollToTop() {
+      window.scrollTo(0, 0)
     }
   },
 };
