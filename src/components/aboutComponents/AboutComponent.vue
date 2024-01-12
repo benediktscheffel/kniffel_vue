@@ -292,7 +292,7 @@ body {
 
 /* Flip Cards CSS */
 .card-container {
-  min-width: 280px !important;
+  min-width: 300px !important;
   perspective: 700px;
 }
 .card-flip {
