@@ -369,32 +369,29 @@ export default {
         }
       })
     },
-    waitForAnimationEnd(element) {
+    waitForAnimationEnd (element) {
       return new Promise(resolve => {
-        element.addEventListener('animationend', function handler() {
-          element.removeEventListener('animationend', handler);
-          resolve();
-        });
-      });
+        element.addEventListener('animationiteration', function handler () {
+          element.removeEventListener('animationiteration', handler)
+          resolve()
+        })
+      })
     },
-    diceCupAnimationStart() {
-      const animatedElement = document.querySelector('.cup');
-      const diceCupAudio = new Audio('src/assets/sounds/dice_sound.mp3');
+    diceCupAnimationStart () {
+      const animatedElement = document.querySelector('.cup')
+      animatedElement.classList.add('showCup')
       animatedElement.addEventListener('animationstart', () => {
-        diceCupAudio.play().then();
         for (const die of document.getElementById('diceInCup').children) {
-          die.style.visibility = 'hidden';
+          die.style.visibility = 'hidden'
         }
-      });
-      animatedElement.style = "animation: 'auto ease 0s 1 normal none running'; background: url('src/assets/images/cup.png')";
-      animatedElement.classList.add('showCup');
+      })
+
       this.waitForAnimationEnd(animatedElement).then(() => {
-        animatedElement.style.background = 'none';
-        animatedElement.style.animation = 'none';
+        animatedElement.classList.remove('showCup')
         for (const die of document.getElementById('diceInCup').children) {
-          die.style.visibility = 'visible';
+          die.style.visibility = 'visible'
         }
-      });
+      })
     }
   }
 }
@@ -413,7 +410,8 @@ export default {
 
 .showCup {
   display: block;
-  animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: shake cubic-bezier(0.36, 0.07, 0.19, 0.97) 1s infinite;
+  background: url('src/assets/images/cup.png');
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;

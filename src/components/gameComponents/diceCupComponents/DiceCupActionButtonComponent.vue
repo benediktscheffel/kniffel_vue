@@ -18,9 +18,15 @@ export default {
   methods: {
     clickEvent () {
       if (this.isDiceButton) {
+        this.hideDice()
         this.$emit('dice')
       } else {
         this.$emit('putAllIn')
+      }
+    },
+    hideDice() {
+      for (const die of document.getElementById('diceInCup').children) {
+        die.style.visibility = 'hidden'
       }
     }
   }
