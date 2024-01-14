@@ -1,6 +1,7 @@
 <template>
   <q-form @submit.prevent="sendChatMessage">
     <q-input
+      @focus="scrollDown"
       rounded outlined
       v-model="messageContent"
       color="white"
@@ -11,6 +12,7 @@
       type="textarea"
     />
     <q-btn
+      id="sendBtn"
       :disable="messageContent.length === 0"
       type="submit" label="Send"
       class="q-mt-md"
@@ -29,6 +31,10 @@ export default {
     sendChatMessage () {
       this.$emit('sendChatMessage', this.messageContent)
       this.messageContent = ''
+    },
+    scrollDown () {
+      const sendBtn = document.getElementById('sendBtn')
+      sendBtn.scrollIntoView()
     }
   },
   emits: ['sendChatMessage']
