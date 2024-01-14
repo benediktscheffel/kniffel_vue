@@ -4,6 +4,20 @@ import { register } from 'register-service-worker'
 // events passes a ServiceWorkerRegistration instance in their arguments.
 // ServiceWorkerRegistration: https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration
 
+function updateOnlineStatus() {
+  if (navigator.onLine) {
+
+  } else {
+    // Trigger an event or function when the app goes offline
+    console.log('No internet connection found. App is running in offline mode.');
+  }
+}
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+
+
+
 register(process.env.SERVICE_WORKER_FILE, {
   // The registrationOptions object will be passed as the second argument
   // to ServiceWorkerContainer.register()
@@ -12,11 +26,11 @@ register(process.env.SERVICE_WORKER_FILE, {
   // registrationOptions: { scope: './' },
 
   ready (/* registration */) {
-    // console.log('Service worker is active.')
+    updateOnlineStatus();
   },
 
   registered (/* registration */) {
-    // console.log('Service worker has been registered.')
+    updateOnlineStatus();
   },
 
   cached (/* registration */) {
@@ -32,8 +46,8 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   offline () {
-    console.log('No internet connection found. App is running in offline mode.')
-  },
+      updateOnlineStatus()
+    },
 
   error (/* err */) {
     // console.error('Error during service worker registration:', err)
