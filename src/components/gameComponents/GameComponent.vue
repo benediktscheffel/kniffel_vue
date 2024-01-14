@@ -236,7 +236,7 @@ export default {
         method: 'GET',
         success: (data) => {
           console.log('Success: ' + data)
-          this.chatUrl = 'http://85.215.67.144/' + data + '/messages'
+          this.chatUrl = 'http://85.215.67.144:9001/' + data + '/messages'
         },
         error: () => {
           console.error("Couldn't recieve CHAT-URL from backend")
