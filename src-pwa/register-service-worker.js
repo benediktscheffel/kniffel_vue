@@ -4,6 +4,7 @@ import { register } from 'register-service-worker'
 // events passes a ServiceWorkerRegistration instance in their arguments.
 // ServiceWorkerRegistration: https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration
 
+
 function updateOnlineStatus() {
   if (navigator.onLine) {
 
