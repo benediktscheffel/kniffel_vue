@@ -1,7 +1,7 @@
 <template>
   <div class="startGame col justify-content-center">
     <q-img id="img" style="display: block; margin: auto" src="src/assets/images/flying_dices.png"/>
-    <h1 style="text-align: center">Welcome to Kiffel</h1>
+    <h1 style="text-align: center">Welcome to Kniffel</h1>
     <h3 style="text-align: center">Let the dice roll</h3>
     <q-form>
       <div class="row row-cols-2 justify-evenly items-center">
