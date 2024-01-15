@@ -3,7 +3,7 @@ import { register } from 'register-service-worker'
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
 // ServiceWorkerRegistration: https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration
-// II
+
 
 function updateOnlineStatus() {
   if (navigator.onLine) {
